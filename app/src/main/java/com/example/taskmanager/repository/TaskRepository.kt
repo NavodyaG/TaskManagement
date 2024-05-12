@@ -96,7 +96,7 @@ class TaskRepository(application: Application) {
         try {
             _statusLiveData.postValue(Loading())
             CoroutineScope(Dispatchers.IO).launch {
-                val result = taskDao.updateTaskPaticularField(taskId, title, description)
+                val result = taskDao.updateTaskParticularField(taskId, title, description)
                 handleResult(result, "Updated Task Successfully", StatusResult.Updated)
 
             }

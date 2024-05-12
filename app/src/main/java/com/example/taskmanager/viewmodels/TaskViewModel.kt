@@ -30,7 +30,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         taskRepository.updateTask(task)
     }
 
-    fun updateTaskPaticularField(taskId: String,title:String,description:String) {
+    fun updateTaskParticularField(taskId: String,title:String,description:String) {
         taskRepository.updateTaskPaticularField(taskId, title, description)
     }
 

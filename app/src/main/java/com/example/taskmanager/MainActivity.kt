@@ -194,11 +194,6 @@ class MainActivity : AppCompatActivity() {
                         loadTaskDialog.dismiss()
                         taskViewModel
                             .updateTask(updateTask)
-//                            .updateTaskPaticularField(
-//                                task.id,
-//                                updateETTitle.text.toString().trim(),
-//                                updateETDesc.text.toString().trim()
-//                            )
                     }
                 }
                 loadTaskDialog.show()
@@ -263,7 +258,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun callSortByDialog() {
-        var checkedItem = 0   // 2 is default item set
+        var checkedItem = 0
         val items = arrayOf("Title Ascending", "Title Descending","Date Ascending","Date Descending")
 
         mainBinding.imgSort.setOnClickListener {

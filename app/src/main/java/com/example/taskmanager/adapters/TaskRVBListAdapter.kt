@@ -17,26 +17,26 @@ class TaskRVBListAdapter(
     private val deleteUpdateCallback: (type: String, position: Int, task: Task) -> Unit,
 ) :
     ListAdapter<Task, RecyclerView.ViewHolder>(DiffCallback()) {
-    class ListTaskViewHolder(private val viewTaskListLayoutBinding: ViewTaskListBinding) :
-        RecyclerView.ViewHolder(viewTaskListLayoutBinding.root) {
+    class ListTaskViewHolder(private val viewTaskListBinding: ViewTaskListBinding) :
+        RecyclerView.ViewHolder(viewTaskListBinding.root) {
 
         fun bind(
             task: Task,
             deleteUpdateCallback: (type: String, position: Int, task: Task) -> Unit,
         ) {
-            viewTaskListLayoutBinding.txtTitle.text = task.title
-            viewTaskListLayoutBinding.txtDesc.text = task.description
+            viewTaskListBinding.txtTitle.text = task.title
+            viewTaskListBinding.txtDesc.text = task.description
 
             val dateFormat = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss a", Locale.getDefault())
 
-            viewTaskListLayoutBinding.txtDate.text = dateFormat.format(task.date)
+            viewTaskListBinding.txtDate.text = dateFormat.format(task.date)
 
-            viewTaskListLayoutBinding.imgDel.setOnClickListener {
+            viewTaskListBinding.imgDel.setOnClickListener {
                 if (adapterPosition != -1) {
                     deleteUpdateCallback("delete", adapterPosition, task)
                 }
             }
-            viewTaskListLayoutBinding.imgEdit.setOnClickListener {
+            viewTaskListBinding.imgEdit.setOnClickListener {
                 if (adapterPosition != -1) {
                     deleteUpdateCallback("update", adapterPosition, task)
                 }
@@ -44,26 +44,26 @@ class TaskRVBListAdapter(
         }
     }
 
-    class GridTaskViewHolder(private val viewTaskGridLayoutBinding: ViewTaskGridBinding) :
-        RecyclerView.ViewHolder(viewTaskGridLayoutBinding.root) {
+    class GridTaskViewHolder(private val viewTaskGridBinding: ViewTaskGridBinding) :
+        RecyclerView.ViewHolder(viewTaskGridBinding.root) {
 
         fun bind(
             task: Task,
             deleteUpdateCallback: (type: String, position: Int, task: Task) -> Unit,
         ) {
-            viewTaskGridLayoutBinding.txtTitle.text = task.title
-            viewTaskGridLayoutBinding.txtDesc.text = task.description
+            viewTaskGridBinding.txtTitle.text = task.title
+            viewTaskGridBinding.txtDesc.text = task.description
 
             val dateFormat = SimpleDateFormat("dd-MMM-yyyy HH:mm:ss a", Locale.getDefault())
 
-            viewTaskGridLayoutBinding.txtDate.text = dateFormat.format(task.date)
+            viewTaskGridBinding.txtDate.text = dateFormat.format(task.date)
 
-            viewTaskGridLayoutBinding.imgDel.setOnClickListener {
+            viewTaskGridBinding.imgDel.setOnClickListener {
                 if (adapterPosition != -1) {
                     deleteUpdateCallback("delete", adapterPosition, task)
                 }
             }
-            viewTaskGridLayoutBinding.imgEdit.setOnClickListener {
+            viewTaskGridBinding.imgEdit.setOnClickListener {
                 if (adapterPosition != -1) {
                     deleteUpdateCallback("update", adapterPosition, task)
                 }
@@ -76,7 +76,7 @@ class TaskRVBListAdapter(
         parent: ViewGroup,
         viewType: Int,
     ): RecyclerView.ViewHolder {
-        return if (viewType == 1){  // Grid_Item
+        return if (viewType == 1){
             GridTaskViewHolder(
                 ViewTaskGridBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -84,7 +84,7 @@ class TaskRVBListAdapter(
                     false
                 )
             )
-        }else{  // List_Item
+        }else{
             ListTaskViewHolder(
                 ViewTaskListBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -108,9 +108,9 @@ class TaskRVBListAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return if (isList.value!!){
-            0 // List_Item
+            0 // List item
         }else{
-            1 // Grid_Item
+            1 // Grid item
         }
     }
 
