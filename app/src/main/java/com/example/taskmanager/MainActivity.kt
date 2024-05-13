@@ -169,10 +169,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val taskRVVBListAdapter = TaskRVBListAdapter(isListMutableLiveData ) { type, position, task ->
+        val taskRVBListAdapter = TaskRVBListAdapter(isListMutableLiveData ) { type, position, task ->
             if (type == "delete") {
                 taskViewModel
-                    // Deleted Task
+                    // Delete Task
                     .deleteTaskUsingId(task.id)
 
                 // Restore Deleted task
@@ -199,16 +199,16 @@ class MainActivity : AppCompatActivity() {
                 loadTaskDialog.show()
             }
         }
-        mainBinding.taskList.adapter = taskRVVBListAdapter
+        mainBinding.taskList.adapter = taskRVBListAdapter
         ViewCompat.setNestedScrollingEnabled(mainBinding.taskList,false)
-        taskRVVBListAdapter.registerAdapterDataObserver(object :
+        taskRVBListAdapter.registerAdapterDataObserver(object :
             RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 super.onItemRangeInserted(positionStart, itemCount)
                 mainBinding.nestedScrollView.smoothScrollTo(0,positionStart)
             }
         })
-        callGetTaskList(taskRVVBListAdapter)
+        callGetTaskList(taskRVBListAdapter)
         callSortByLiveData()
         statusCallback()
         callSearch()

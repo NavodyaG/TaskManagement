@@ -72,7 +72,7 @@ class TaskRepository(application: Application) {
             _statusLiveData.postValue(Loading())
             CoroutineScope(Dispatchers.IO).launch {
                 val result = taskDao.insertTask(task)
-                handleResult(result.toInt(), "Inserted Task Successfully", StatusResult.Added)
+                handleResult(result.toInt(), "Task Inserted Successfully", StatusResult.Added)
             }
         } catch (e: Exception) {
             _statusLiveData.postValue(Error(e.message.toString()))
@@ -84,7 +84,7 @@ class TaskRepository(application: Application) {
             _statusLiveData.postValue(Loading())
             CoroutineScope(Dispatchers.IO).launch {
                 val result = taskDao.updateTask(task)
-                handleResult(result, "Updated Task Successfully", StatusResult.Updated)
+                handleResult(result, "Task Updated Successfully", StatusResult.Updated)
 
             }
         } catch (e: Exception) {
@@ -92,12 +92,12 @@ class TaskRepository(application: Application) {
         }
     }
 
-    fun updateTaskPaticularField(taskId: String, title: String, description: String) {
+    fun updateTaskParticularField(taskId: String, title: String, description: String) {
         try {
             _statusLiveData.postValue(Loading())
             CoroutineScope(Dispatchers.IO).launch {
                 val result = taskDao.updateTaskParticularField(taskId, title, description)
-                handleResult(result, "Updated Task Successfully", StatusResult.Updated)
+                handleResult(result, "Task Updated Successfully", StatusResult.Updated)
 
             }
         } catch (e: Exception) {
@@ -110,7 +110,7 @@ class TaskRepository(application: Application) {
             _statusLiveData.postValue(Loading())
             CoroutineScope(Dispatchers.IO).launch {
                 val result = taskDao.deleteTask(task)
-                handleResult(result, "Deleted Task Successfully", StatusResult.Deleted)
+                handleResult(result, "Task Deleted Successfully", StatusResult.Deleted)
 
             }
         } catch (e: Exception) {
@@ -123,7 +123,7 @@ class TaskRepository(application: Application) {
             _statusLiveData.postValue(Loading())
             CoroutineScope(Dispatchers.IO).launch {
                 val result = taskDao.deleteTaskUsingId(taskId)
-                handleResult(result, "Deleted Task Successfully", StatusResult.Deleted)
+                handleResult(result, "Task Deleted Successfully", StatusResult.Deleted)
 
             }
         } catch (e: Exception) {

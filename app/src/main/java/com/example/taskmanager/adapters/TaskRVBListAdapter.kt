@@ -71,7 +71,6 @@ class TaskRVBListAdapter(
         }
     }
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -103,7 +102,6 @@ class TaskRVBListAdapter(
         }else{
             (holder as GridTaskViewHolder).bind(task,deleteUpdateCallback)
         }
-
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -114,8 +112,6 @@ class TaskRVBListAdapter(
         }
     }
 
-
-
     class DiffCallback : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id
@@ -124,7 +120,5 @@ class TaskRVBListAdapter(
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem == newItem
         }
-
     }
-
 }
